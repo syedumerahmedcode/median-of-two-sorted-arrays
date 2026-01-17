@@ -44,9 +44,9 @@ public class Solution {
              */
 
             int xLeft = partX == 0 ? Integer.MIN_VALUE : nums1[partX - 1];
-            int xRight = partX == 0 ? Integer.MAX_VALUE : nums1[partX];
-            int yLeft = partY == 0 ? Integer.MIN_VALUE : nums2[partX - 1];
-            int yRight = partY == 0 ? Integer.MAX_VALUE : nums2[partX];
+            int xRight = partX == x ? Integer.MAX_VALUE : nums1[partX];
+            int yLeft = partY == 0 ? Integer.MIN_VALUE : nums2[partY - 1];
+            int yRight = partY == y ? Integer.MAX_VALUE : nums2[partY];
 
             /**
              * If xLeft<=yRight and yLeft<=xRight, we have found the correctc portion. Now,
@@ -60,7 +60,7 @@ public class Solution {
                  * IF total umber of elements in nums1 and nums2 is even, we do average
                  */
                 if ((x + y) % 2 == 0) {
-                    return ((double) Math.max(xLeft, yLeft) + Math.max(xRight, yRight) / 2);
+                    return ((double) Math.max(xLeft, yLeft) + Math.min(xRight, yRight)) / 2;
                 } else {
                     /**
                      * When we have odd number of elements in nums1 and nums2
